@@ -1,0 +1,22 @@
+RewriteEngine On
+
+# Redireciona /login.php para /pages/login.php
+RewriteRule ^login\.php$ /pages/login.php [L]
+
+# Redireciona /register.php para /pages/register.php
+RewriteRule ^register\.php$ /pages/register.php [L]
+
+# Redireciona /profile.php para /pages/profile.php
+RewriteRule ^profile\.php$ /pages/profile.php [L]
+
+# Redireciona /logout.php para /pages/logout.php
+RewriteRule ^logout\.php$ /pages/logout.php [L]
+
+# Bloquear o acesso direto à pasta /pages
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^pages/ - [F,L]
+
+# Bloquear acesso a qualquer outra coisa que não seja arquivos existentes ou diretórios
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ - [F,L]
