@@ -1,5 +1,8 @@
 <?php
+define('BASE_PATH', __DIR__);
+define('DOMAIN', 'teste_alfama_web.local');
 
-// Redireciona automaticamente para a página de login pois não foi solicitado página HOME
-header('Location: login.php');
-exit;
+// Inclua o layout principal
+include(BASE_PATH . '/public/pages/layout.php');
+
+?>

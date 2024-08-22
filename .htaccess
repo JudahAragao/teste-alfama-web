@@ -1,22 +1,26 @@
+# Bloquear acesso direto a qualquer arquivo PHP
+<FilesMatch "\.php$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+# Permitir acesso ao index.php
+<Files "index.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+
+# Habilitar o motor de reescrita
 RewriteEngine On
 
-# Redireciona /login.php para /pages/login.php
-RewriteRule ^login\.php$ /pages/login.php [L]
+# Redirecionar /index.php?action=... para /?action=...
+RewriteCond %{THE_REQUEST} /index\.php\?action=([^\&]+) [NC]
+RewriteRule ^index\.php$ /?action=%1 [R=301,L]
 
-# Redireciona /register.php para /pages/register.php
-RewriteRule ^register\.php$ /pages/register.php [L]
-
-# Redireciona /profile.php para /pages/profile.php
-RewriteRule ^profile\.php$ /pages/profile.php [L]
-
-# Redireciona /logout.php para /pages/logout.php
-RewriteRule ^logout\.php$ /pages/logout.php [L]
-
-# Bloquear o acesso direto à pasta /pages
-RewriteCond %{REQUEST_FILENAME} -d
-RewriteRule ^pages/ - [F,L]
-
-# Bloquear acesso a qualquer outra coisa que não seja arquivos existentes ou diretórios
+# Redirecionar URLs amigáveis para index.php
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^ - [F,L]
+RewriteRule ^([^/]*)$ index.php?action=$1 [L,QSA]
+
+# Garantir que index.php não apareça na URL
+RewriteRule ^index\.php$ - [L]
