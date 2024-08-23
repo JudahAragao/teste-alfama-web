@@ -18,8 +18,8 @@ include 'app/components/button-form.php';
 
                 <form id="form-login">
                     <?php
-                    echo inputGroup('Email', 'email', 'email', '', 'Digite seu email', ['required' => 'true'],'');
-                    echo inputGroup('Senha', 'password', 'senha', '', 'Insira sua senha', ['required' => 'true'],'');
+                    echo inputGroup('Email', 'email', 'email', '', 'Digite seu email', ['required' => 'true'],'','emailError');
+                    echo inputGroup('Senha', 'password', 'senha', '', 'Insira sua senha', ['required' => 'true'],'','passwordError');
 
                     ?>
                     <a href="">

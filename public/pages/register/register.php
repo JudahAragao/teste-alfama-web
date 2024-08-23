@@ -22,10 +22,10 @@ include 'app/components/button-form.php';
 
                 <form id="form-register">
                     <?php
-                    echo inputGroup('Nome completo', 'nome_completo', 'nome_completo', '', 'Digite seu nome completo', ['required' => 'true'],'');
-                    echo inputGroup('Email', 'email', 'email', '', 'Digite seu email', ['required' => 'true'],'');
-                    echo inputGroup('Senha', 'password', 'senha', '', 'Insira sua senha', ['required' => 'true'],'Inserir mais de 8 caracteres');
-                    echo buttonForm('Criar conta', 'submit', 'btn btn-submit', ['id' => 'saveButton'], '');
+                    echo inputGroup('Nome completo', 'nome_completo', 'nome_completo', '', 'Digite seu nome completo', ['required' => 'true'], '', 'nameError');
+                    echo inputGroup('Email', 'email', 'email', '', 'Digite seu email', ['required' => 'true'], '', 'emailError');
+                    echo inputGroup('Senha', 'password', 'senha', '', 'Insira sua senha', ['required' => 'true'], 'Inserir mais de 8 caracteres', 'passwordError');
+                    echo buttonForm('Criar conta', 'submit', 'btn btn-submit', ['id' => 'submitRegister'], '');
                     ?>
                 </form>
                 <a href="http://teste_alfama_web.local/?action=login">
@@ -35,6 +35,59 @@ include 'app/components/button-form.php';
         </div>
     </div>
 
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#submitRegister').click(function(event) {
+                event.preventDefault();
+
+                var nome_completo = $('#nome_completo').val();
+                var email = $('#email').val();
+                var senha = $('#senha').val();
+
+                $('#alert').html('');
+                if (nome_completo == '') {
+                    $('#alert').html('Preencher o nome.');
+                    $('#alert').addClass("alert-danger");
+                    return false;
+                }
+
+                $('#alert').html('');
+                if (email == '') {
+                    $('#alert').html('Preencher o email.');
+                    $('#alert').addClass("alert-danger");
+                    return false;
+                }
+
+                $('#alert').html('');
+                if (senha == '') {
+                    $('#alert').html('Preencher a sua senha.');
+                    $('#alert').addClass("alert-danger");
+                    return false;
+                }
+
+                $('#alert').html('');
+
+                $.ajax({
+                    url: 'app/includes/process_register.php',
+                    method: 'POST',
+                    data: {
+                        nome_completo,
+                        email,
+                        senha
+                    },
+                    dataType: 'json',
+                    success: function(result) {
+                        $('form').trigger("reset");
+                        $('#alert').addClass("alert-success");
+                        $('#alert').fadeIn().html(result);
+                        setTimeout(function() {
+                            $('#alert').fadeOut('Slow');
+                        }, 3000);
+                    }
+                });
+            });
+        });
+    </script>
 
     <div class="col-banner">
         <?php include(BASE_PATH . '/app/components/banner-login-register.php'); ?>

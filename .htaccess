@@ -1,8 +1,8 @@
 # Bloquear acesso direto a qualquer arquivo PHP
-<FilesMatch "\.php$">
-    Order Allow,Deny
-    Deny from all
-</FilesMatch>
+#<FilesMatch "\.php$">
+ #   Order Allow,Deny
+ #  Deny from all
+#</FilesMatch>
 
 # Permitir acesso ao index.php
 <Files "index.php">

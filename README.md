@@ -12,7 +12,13 @@
 
 ## Configuração Básica
 
-Coloque a pasta do projeto em /var/www/html/ e siga a etapa 4 da configuração opcional 
+Coloque a pasta do projeto em /var/www/html/ e siga a etapa 4 da configuração opcional
+
+Rodar o comando dump do composer
+
+```bash
+composer dump-autoload
+```
 
 ## Configurações opcional
 

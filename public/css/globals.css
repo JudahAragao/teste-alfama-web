@@ -27,6 +27,8 @@ body p {
     margin: 0;
 }
 
+
+
 .contrast {
     color: var(--link-color) !important;
 }
@@ -43,6 +45,13 @@ body p {
 .container-fluid {
     height: 100vh;
     padding: 0 !important;
+    position: relative;
+}
+
+.alert {
+    position: absolute !important;
+    top: 10px;
+    left: 10px;
 }
 
 .col-form {
