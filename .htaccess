@@ -1,0 +1,26 @@
+# Bloquear acesso direto a qualquer arquivo PHP
+<FilesMatch "\.php$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+# Permitir acesso ao index.php
+<Files "index.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+
+# Habilitar o motor de reescrita
+RewriteEngine On
+
+# Redirecionar /index.php?action=... para /?action=...
+RewriteCond %{THE_REQUEST} /index\.php\?action=([^\&]+) [NC]
+RewriteRule ^index\.php$ /?action=%1 [R=301,L]
+
+# Redirecionar URLs amigáveis para index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([^/]*)$ index.php?action=$1 [L,QSA]
+
+# Garantir que index.php não apareça na URL
+RewriteRule ^index\.php$ - [L]

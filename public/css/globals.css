@@ -1,0 +1,288 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+:root {
+    --bg-color-blue: #2C6D97;
+    --submit-buttom-color: #2C6D97;
+    --submit-buttom-google-color: #FFFFFF;
+    --link-color: #2C6D97;
+    --link-color-hover: #2f7fb4;
+    --submit-buttom-text-color: #FFFFFF;
+    --border-color: #DFE0E2;
+    --primary-text-color: #000000;
+    --primary-text-color: #000000;
+    --secondary-text-color: #262626;
+    --avaliacap-estrela: #e1be0d; 
+    --empity-file-photo: #D9D9D9
+}
+
+body {
+    font-family: 'Montserrat', sans-serif !important;
+}
+
+body a {
+    text-decoration: none;
+}
+
+body p {
+    margin: 0;
+}
+
+.contrast {
+    color: var(--link-color) !important;
+}
+
+.contrast:hover {
+    color: var(--link-color-hover) !important;;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+.container-fluid {
+    height: 100vh;
+    padding: 0 !important;
+}
+
+.col-form {
+    width: 626px;
+}
+
+.col-banner {
+    width: 814px;
+}
+
+.col-form, .col-banner {
+    padding: 0 !important;
+}
+
+/* Estilização do header-login-register ABAIXO  */
+.container--header-login-register {
+    width: 100%;
+    height: 111px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 !important;
+}
+
+.container--header-login-register .saiba-mais, 
+.container--header-login-register .logo {
+    width: 100%;
+    height: 55px;
+    display: flex;
+    align-items: center;
+}
+
+.container--header-login-register .logo img {
+    margin-left: 40px;
+}
+
+.container--header-login-register .saiba-mais {
+    justify-content: flex-end;
+}
+
+.container--header-login-register .saiba-mais a {
+    margin-right: 40px;
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--link-color);
+    transition: .3s;
+}
+
+.container--header-login-register .saiba-mais a:hover {
+    color: var(--link-color-hover);
+    transition: .3s;
+}
+/* Estilização do header-login-register ACIMA  */
+
+
+/* Estilização do header-loged ABAIXO */
+.container--header-loged {
+    width: 100%;
+    height: 96px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 !important;
+    background-color: var(--bg-color-blue);
+}
+
+.container--header-loged .logo {
+    margin-left: 85px;
+}
+
+.container--header-loged .hamburger-menu {
+    margin-right: 85px;
+}
+
+/* Estilização do header-loged ACIMA  */
+
+
+/* Estilização do banner-login-register ABAIXO  */
+.banner--header-login-register {
+    width: 100%;
+    height: 100vh; /* Ajuste a altura conforme necessário */
+    background-image: url('../img/banner-login-register.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+.dark-overlay {
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.title-subtitle {
+    width: 582px;
+    height: 215px;
+    display: flex;
+    flex-direction: column;
+    gap: 31px;
+    margin-left: 71px;
+    margin-bottom: 28px;
+}
+
+.title-subtitle h1, 
+.title-subtitle h3 {
+    color: var(--submit-buttom-text-color);
+    margin: 0;
+}
+
+.title-subtitle h1 {
+    font-weight: bold;
+    font-size: 50px;
+    line-height: 59px; /* tamanho da font + 9px */
+}
+
+.title-subtitle h3 {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 35px; /* tamanho da font + 11px */
+}
+
+.avaliacao {
+    display: flex;
+    gap: 8px;
+}
+
+.avaliacao p {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--submit-buttom-text-color);
+}
+
+.avaliacao .grupo-estrelas {
+    display: flex;
+    margin-left: 71px;
+    gap: 5px;
+}
+
+.avaliacao i {
+    color: var(--avaliacap-estrela);
+    font-size: 20px;
+}
+
+.numero-comentarios {
+    margin: 6px 0 0 71px;
+}
+
+.numero-comentarios p {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--submit-buttom-text-color);
+}
+
+.btn-carrossel {
+    display: flex;
+    justify-content: flex-end;
+    margin: 10px 51px 78px 0;
+    gap: 16px;
+}
+/* Estilização do banner-login-register ACIMA  */
+
+
+/* Estilização do input-group ABAIXO  */
+
+.form-label{
+    font-weight: 600 !important;
+    margin-bottom: 5px !important;
+    margin-left: 12px;
+    color: var(--secondary-text-color);
+}
+
+.group-input {
+    display: flex !important;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.group-input input {
+    font-weight: 600 !important;
+    height: 47px;
+}
+
+.form-small {
+    font-weight: 500 !important;
+    font-size: 12px;
+    margin-left: 12px;
+}
+
+.btn-submit {
+    background-color: var(--submit-buttom-color) !important;
+    font-weight: 600 !important;
+    color: var(--submit-buttom-text-color) !important;
+    width: 100%;
+    cursor: pointer;
+    height: 47px;
+}
+
+.btn-google {
+    background-color: var(--submit-buttom-google-color) !important;
+    font-weight: 600 !important;
+    color: var(--secondary-text-color) !important;
+    margin-top: 20px;
+    width: 100%;
+    border: 1px solid var(--border-color) !important;
+    cursor: pointer;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    height: 47px;
+}
+
+/* Estilização do input-group ACIMA  */
+
+
+/* Configuração responsividade ABAIXO */
+/* Estilos para telas grandes */
+@media (min-width: 1440px) {
+    /* para a imagem crescer acima de 1440px e acompanhando .col-banner */
+    .col-banner { 
+        flex: 1;
+    }
+}
+
+/* Estilos para telas médias */
+@media (min-width: 768px) and (max-width: 1439px) {
+    /* Seus estilos para telas médias aqui */
+}
+
+/* Estilos para telas pequenas */
+@media (max-width: 767px) {
+    .col-banner {
+        display: none;
+    }
+
+    .col-form {
+        flex: 1;
+    }
+}
+
+/* Configuração responsividade ACIMA */
