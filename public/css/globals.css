@@ -1,15 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
 :root {
-    --submit-buttom-and-link-color: #2C6D97;
+    --bg-color-blue: #2C6D97;
+    --submit-buttom-color: #2C6D97;
+    --submit-buttom-google-color: #FFFFFF;
     --link-color: #2C6D97;
     --link-color-hover: #2f7fb4;
     --submit-buttom-text-color: #FFFFFF;
-    --background-color: #DFE0E2;
+    --border-color: #DFE0E2;
     --primary-text-color: #000000;
     --primary-text-color: #000000;
     --secondary-text-color: #262626;
     --avaliacap-estrela: #e1be0d; 
+    --empity-file-photo: #D9D9D9
 }
 
 body {
@@ -22,6 +25,18 @@ body a {
 
 body p {
     margin: 0;
+}
+
+.contrast {
+    color: var(--link-color) !important;
+}
+
+.contrast:hover {
+    color: var(--link-color-hover) !important;;
+}
+
+.underline {
+    text-decoration: underline;
 }
 
 .container-fluid {
@@ -80,6 +95,28 @@ body p {
     transition: .3s;
 }
 /* Estilização do header-login-register ACIMA  */
+
+
+/* Estilização do header-loged ABAIXO */
+.container--header-loged {
+    width: 100%;
+    height: 96px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 !important;
+    background-color: var(--bg-color-blue);
+}
+
+.container--header-loged .logo {
+    margin-left: 85px;
+}
+
+.container--header-loged .hamburger-menu {
+    margin-right: 85px;
+}
+
+/* Estilização do header-loged ACIMA  */
 
 
 /* Estilização do banner-login-register ABAIXO  */
@@ -144,7 +181,7 @@ body p {
 .avaliacao .grupo-estrelas {
     display: flex;
     margin-left: 71px;
-    gap: 7px;
+    gap: 5px;
 }
 
 .avaliacao i {
@@ -168,7 +205,60 @@ body p {
     margin: 10px 51px 78px 0;
     gap: 16px;
 }
-/* Estilização do banner-login-register acima  */
+/* Estilização do banner-login-register ACIMA  */
+
+
+/* Estilização do input-group ABAIXO  */
+
+.form-label{
+    font-weight: 600 !important;
+    margin-bottom: 5px !important;
+    margin-left: 12px;
+    color: var(--secondary-text-color);
+}
+
+.group-input {
+    display: flex !important;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.group-input input {
+    font-weight: 600 !important;
+    height: 47px;
+}
+
+.form-small {
+    font-weight: 500 !important;
+    font-size: 12px;
+    margin-left: 12px;
+}
+
+.btn-submit {
+    background-color: var(--submit-buttom-color) !important;
+    font-weight: 600 !important;
+    color: var(--submit-buttom-text-color) !important;
+    width: 100%;
+    cursor: pointer;
+    height: 47px;
+}
+
+.btn-google {
+    background-color: var(--submit-buttom-google-color) !important;
+    font-weight: 600 !important;
+    color: var(--secondary-text-color) !important;
+    margin-top: 20px;
+    width: 100%;
+    border: 1px solid var(--border-color) !important;
+    cursor: pointer;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    height: 47px;
+}
+
+/* Estilização do input-group ACIMA  */
+
 
 /* Configuração responsividade ABAIXO */
 /* Estilos para telas grandes */

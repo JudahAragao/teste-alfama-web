@@ -1,0 +1,62 @@
+@import url('/public/css/globals.css');
+
+.container-form {
+    width: 100%;
+}
+
+.content-form {
+    width: 356px;
+    margin: 79px 0 0 86px;
+}
+
+.content-form h1 {
+    font-size: 40px;
+    font-weight: bold;
+    margin: 0 0 26px 0;
+    color: var(--primary-text-color);
+}
+
+.content-form a {
+    display: flex;
+    justify-content: center;
+    margin-top: 35px;
+}
+
+.content-form a p {
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--secondary-text-color);
+}
+
+#form-register {
+    margin-top: 27px;
+}
+
+.btn-submit {
+    margin-top: 32px;
+}
+
+.hr-with-text {
+    position: relative;
+    text-align: center;
+    border: none;
+    margin: 16px 0 0 0;
+}
+
+.hr-with-text::before {
+    content: "";
+    display: block;
+    border-top: 1px solid #000;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    z-index: -1;
+}
+
+.hr-with-text span {
+    position: relative;
+    background: #fff; /* Cor de fundo para sobrepor a linha */
+    padding: 0 10px;
+    color: #000;
+}

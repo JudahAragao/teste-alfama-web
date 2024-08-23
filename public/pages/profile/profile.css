@@ -1,0 +1,85 @@
+@import url('/public/css/globals.css');
+
+.container-profile {
+    width: 100%;
+    height: calc(100% - 96px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content-profile {
+    width: 738px;
+}
+
+.content-profile #form-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header-form {
+    width: 234px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header-form .profile-photo {
+    width: 186px;
+    height: 178px;
+    border-radius: 100%;
+    background-color: var(--empity-file-photo);
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.btn-profile-photo {
+    background-color: var(--submit-buttom-color) !important;
+    color: var(--submit-buttom-text-color) !important;
+    cursor: pointer;
+    height: 41px;
+    width: 41px;
+    border-radius: 100% !important;
+    position: absolute;
+    top: 150px;
+}
+
+.header-form h3,
+.header-form p {
+    font-weight: 500;
+    margin-bottom: 0;
+}
+
+.header-form h3 {
+    font-size: 20px;
+    margin-top: 23px;
+}
+
+.header-form p {
+    font-size: 16px;
+}
+
+.body-form {
+    width: 738px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.body-form input {
+    width: 354px;
+}
+
+.footer-form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.footer-form button {
+    width: 354px;
+}

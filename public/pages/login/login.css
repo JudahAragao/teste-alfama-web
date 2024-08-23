@@ -1,0 +1,55 @@
+@import url('/public/css/globals.css');
+
+.container-form {
+    width: 100%;
+}
+
+.content-form {
+    width: 356px;
+    margin: 86px 0 0 86px;
+}
+
+.content-form h1 {
+    font-size: 40px;
+    font-weight: bold;
+    margin: 0 0 26px 0;
+    color: var(--primary-text-color);
+}
+
+.content-form a p {
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--secondary-text-color);
+}
+
+.content-form a p span {
+    color: var(--link-color);
+    transition: .3s;
+}
+
+.content-form a p:hover>span {
+    color: var(--link-color-hover);
+    transition: .3s;
+}
+
+#form-login {
+    margin-top: 42px;
+}
+
+.content-form a p.contrast {
+    margin: 15px 0 0 12px;
+}
+
+.btn-submit {
+    margin-top: 42px;
+}
+
+.footer-form {
+    margin: 130px 0 0 50px;
+}
+
+.footer-form a {
+    color: var(--secondary-text-color);
+    font-size: 18px;
+    font-weight: bold;
+}
