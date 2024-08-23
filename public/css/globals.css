@@ -11,7 +11,7 @@
     --primary-text-color: #000000;
     --primary-text-color: #000000;
     --secondary-text-color: #262626;
-    --avaliacap-estrela: #e1be0d; 
+    --avaliacap-estrela: #e1be0d;
     --empity-file-photo: #D9D9D9
 }
 
@@ -32,7 +32,8 @@ body p {
 }
 
 .contrast:hover {
-    color: var(--link-color-hover) !important;;
+    color: var(--link-color-hover) !important;
+    ;
 }
 
 .underline {
@@ -52,7 +53,8 @@ body p {
     width: 814px;
 }
 
-.col-form, .col-banner {
+.col-form,
+.col-banner {
     padding: 0 !important;
 }
 
@@ -66,7 +68,7 @@ body p {
     padding: 0 !important;
 }
 
-.container--header-login-register .saiba-mais, 
+.container--header-login-register .saiba-mais,
 .container--header-login-register .logo {
     width: 100%;
     height: 55px;
@@ -94,6 +96,7 @@ body p {
     color: var(--link-color-hover);
     transition: .3s;
 }
+
 /* Estilização do header-login-register ACIMA  */
 
 
@@ -122,7 +125,8 @@ body p {
 /* Estilização do banner-login-register ABAIXO  */
 .banner--header-login-register {
     width: 100%;
-    height: 100vh; /* Ajuste a altura conforme necessário */
+    height: 100vh;
+    /* Ajuste a altura conforme necessário */
     background-image: url('../img/banner-login-register.png');
     background-position: center;
     background-size: cover;
@@ -149,7 +153,7 @@ body p {
     margin-bottom: 28px;
 }
 
-.title-subtitle h1, 
+.title-subtitle h1,
 .title-subtitle h3 {
     color: var(--submit-buttom-text-color);
     margin: 0;
@@ -158,13 +162,15 @@ body p {
 .title-subtitle h1 {
     font-weight: bold;
     font-size: 50px;
-    line-height: 59px; /* tamanho da font + 9px */
+    line-height: 59px;
+    /* tamanho da font + 9px */
 }
 
 .title-subtitle h3 {
     font-weight: 600;
     font-size: 24px;
-    line-height: 35px; /* tamanho da font + 11px */
+    line-height: 35px;
+    /* tamanho da font + 11px */
 }
 
 .avaliacao {
@@ -205,12 +211,13 @@ body p {
     margin: 10px 51px 78px 0;
     gap: 16px;
 }
+
 /* Estilização do banner-login-register ACIMA  */
 
 
 /* Estilização do input-group ABAIXO  */
 
-.form-label{
+.form-label {
     font-weight: 600 !important;
     margin-bottom: 5px !important;
     margin-left: 12px;
@@ -263,19 +270,68 @@ body p {
 /* Configuração responsividade ABAIXO */
 /* Estilos para telas grandes */
 @media (min-width: 1440px) {
+
     /* para a imagem crescer acima de 1440px e acompanhando .col-banner */
-    .col-banner { 
+    .col-banner {
         flex: 1;
     }
 }
 
 /* Estilos para telas médias */
 @media (min-width: 768px) and (max-width: 1439px) {
-    /* Seus estilos para telas médias aqui */
+
+    .container-form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .content-form {
+        margin: 0 !important;
+    }
+
+    .col-banner {
+        display: none;
+    }
+
+    .col-form {
+        flex: 1;
+    }
 }
 
 /* Estilos para telas pequenas */
 @media (max-width: 767px) {
+
+    .container-form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .content-form {
+        margin: 0 !important;
+    }
+
+    .container--header-login-register .logo img {
+        margin-left: 20px;
+    }
+    
+    .container--header-login-register .saiba-mais a{
+        margin-right: 20px;
+    }
+
+    .container--header-loged .logo {
+        margin-left: 20px;
+    }
+
+    .container--header-loged .logo img {
+        width: 168px;
+    }
+    
+    .container--header-loged .hamburger-menu {
+        margin-right: 20px;
+    }
+
     .col-banner {
         display: none;
     }
