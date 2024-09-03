@@ -51,7 +51,21 @@ body p {
 .alert {
     position: absolute !important;
     top: 10px;
-    left: 10px;
+    right: 10px;
+}
+
+.alert.vibrate {
+    animation: vibrate .5s ease-in-out;
+}
+
+/* Definir a animação de vibração */
+@keyframes vibrate {
+    0% { transform: translateX(0); }
+    20% { transform: translateX(-10px); }
+    40% { transform: translateX(10px); }
+    60% { transform: translateX(-10px); }
+    80% { transform: translateX(10px); }
+    100% { transform: translateX(0); }
 }
 
 .col-form {
@@ -124,7 +138,7 @@ body p {
     margin-left: 85px;
 }
 
-.container--header-loged .hamburger-menu {
+.container--header-loged .dropdown {
     margin-right: 85px;
 }
 

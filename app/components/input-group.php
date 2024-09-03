@@ -1,5 +1,5 @@
 <?php
-function inputGroup($label, $type = 'text', $name = '', $value = '', $placeholder = '', $attributes = [], $small, $id_small) {
+function inputGroup($label, $type = 'text', $name = '', $value = '', $placeholder = '', $attributes = [], $small) {
     // Inicia a string do grupo de formulários
     $inputGroup = "<div class=\"group-input\">\n";
 
@@ -18,9 +18,8 @@ function inputGroup($label, $type = 'text', $name = '', $value = '', $placeholde
 
     $inputGroup .= ">";
 
-    $inputGroup .= "<small id=\"$id_small\" class=\"form-text text-muted form-small\"></small>";
     if (!empty($small)) {
-        $inputGroup .= "<small id=\"$id_small\" class=\"form-text text-muted form-small\">$small</small>";
+        $inputGroup .= "<small class=\"form-text text-muted form-small\">$small</small>";
     }
     
 

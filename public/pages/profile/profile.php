@@ -1,11 +1,19 @@
 <?php
+session_start();
 include 'app/components/input-group.php';
 include 'app/components/button-form.php';
+
+// Verifica se o usuário está autenticado
+if (!isset($_SESSION['user_id'])) {
+    header('Location: http://teste_alfama_web.local/?action=login'); // Redireciona para a página de login se não estiver autenticado
+    exit;
+}
 ?>
 
 <div>
     <?php include(BASE_PATH . '/app/components/header-loged.php'); ?>
 </div>
+
 <div class="container-profile">
     <div class="content-profile">
         <form id="form-profile">
@@ -36,7 +44,7 @@ include 'app/components/button-form.php';
             </div>
             <div class="footer-form">
                 <?php
-                echo buttonForm('Atualizar cadastro', 'submit', 'btn btn-submit', ['id' => 'saveButton'], '');
+                echo buttonForm('Atualizar cadastro', 'submit', 'btn btn-submit', ['id' => 'submitSave'], '');
                 ?>
             </div>
         </form>

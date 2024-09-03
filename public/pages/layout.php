@@ -37,7 +37,7 @@ $pageFile = BASE_PATH . '/public/pages/' . $action . '/' . $action . '.php';
 
 <body>
     <div class="container-fluid">
-    <div class="alert" id="alert" role="alert"></div>
+        <div class="alert" id="alert" role="alert"></div>
         <?php
         if (file_exists($pageFile)) {
             include($pageFile);

@@ -1,6 +1,13 @@
 <?php
+session_start();
 include 'app/components/input-group.php';
 include 'app/components/button-form.php';
+
+// Verifica se o usuário está autenticado
+if (isset($_SESSION['user_id'])) {
+    header('Location: http://teste_alfama_web.local/?action=profile'); // Redireciona para a página de login se não estiver autenticado
+    exit;
+}
 ?>
 
 <div class="d-flex m-0">
@@ -22,9 +29,9 @@ include 'app/components/button-form.php';
 
                 <form id="form-register">
                     <?php
-                    echo inputGroup('Nome completo', 'nome_completo', 'nome_completo', '', 'Digite seu nome completo', ['required' => 'true'], '', 'nameError');
-                    echo inputGroup('Email', 'email', 'email', '', 'Digite seu email', ['required' => 'true'], '', 'emailError');
-                    echo inputGroup('Senha', 'password', 'senha', '', 'Insira sua senha', ['required' => 'true'], 'Inserir mais de 8 caracteres', 'passwordError');
+                    echo inputGroup('Nome completo', 'nome_completo', 'nome_completo', '', 'Digite seu nome completo', ['required' => 'true'], '');
+                    echo inputGroup('Email', 'email', 'email', '', 'Digite seu email', ['required' => 'true'], '');
+                    echo inputGroup('Senha', 'password', 'senha', '', 'Insira sua senha', ['required' => 'true'], 'Inserir mais de 8 caracteres');
                     echo buttonForm('Criar conta', 'submit', 'btn btn-submit', ['id' => 'submitRegister'], '');
                     ?>
                 </form>
@@ -36,39 +43,18 @@ include 'app/components/button-form.php';
     </div>
 
     <script type="text/javascript">
-        $(document).ready(function() {
-            $('#submitRegister').click(function(event) {
+        $(document).ready(() => {
+            $('#submitRegister').click((event) => {
                 event.preventDefault();
 
                 var nome_completo = $('#nome_completo').val();
                 var email = $('#email').val();
                 var senha = $('#senha').val();
 
-                $('#alert').html('');
-                if (nome_completo == '') {
-                    $('#alert').html('Preencher o nome.');
-                    $('#alert').addClass("alert-danger");
-                    return false;
-                }
-
-                $('#alert').html('');
-                if (email == '') {
-                    $('#alert').html('Preencher o email.');
-                    $('#alert').addClass("alert-danger");
-                    return false;
-                }
-
-                $('#alert').html('');
-                if (senha == '') {
-                    $('#alert').html('Preencher a sua senha.');
-                    $('#alert').addClass("alert-danger");
-                    return false;
-                }
-
-                $('#alert').html('');
+                $('#alert').removeClass("alert-danger alert-success vibrate").hide();
 
                 $.ajax({
-                    url: 'app/includes/process_register.php',
+                    url: 'http://teste_alfama_web.local/app/includes/process_register.php',
                     method: 'POST',
                     data: {
                         nome_completo,
@@ -76,13 +62,22 @@ include 'app/components/button-form.php';
                         senha
                     },
                     dataType: 'json',
-                    success: function(result) {
-                        $('form').trigger("reset");
-                        $('#alert').addClass("alert-success");
-                        $('#alert').fadeIn().html(result);
-                        setTimeout(function() {
+                    success: (result) => {
+                        if (result.status === 'success') {
+                            $('#form-register').trigger("reset");
+                            $('#alert').removeClass("alert-danger").addClass("alert-success").html(result.message).fadeIn();
+                        } else {
+                            $('#alert').removeClass("alert-success").addClass("alert-danger vibrate").html(result.message).fadeIn();
+                        }
+                        setTimeout(() => {
                             $('#alert').fadeOut('Slow');
-                        }, 3000);
+                        }, 5000);
+                    },
+                    error: (jqXHR, textStatus, errorThrown) => {
+                        $('#alert').html('Erro ao processar a requisição.').addClass("alert-danger vibrate").fadeIn();
+                        setTimeout(() => {
+                            $('#alert').fadeOut('Slow');
+                        }, 5000);
                     }
                 });
             });

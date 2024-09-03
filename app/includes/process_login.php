@@ -1,7 +1,8 @@
 <?php
+session_start();
 header('Content-Type: application/json');
 require_once 'connect.php';
-require_once './validators/validation_register.php';
+require_once './validators/validation_login.php';
 
 $response = [];
 
@@ -19,30 +20,30 @@ try {
 
     // Recebimento dos dados
     $data = [
-        'nome_completo' => trim($_POST["nome_completo"] ?? ''),
         'email' => trim($_POST["email"] ?? ''),
         'senha' => trim($_POST["senha"] ?? ''),
     ];
 
     // Validação
-    validateDataRegister($data);
+    validateDataLogin($data);
 
-    // Hash da senha com bcrypt
-    $hashedPassword = password_hash($data['senha'], PASSWORD_BCRYPT);
-    
-    $query = 'INSERT INTO tb_user (nome_completo, email, senha) VALUES (:nome_completo, :email, :senha)';
+    // Verificação das credenciais
+    $query = 'SELECT id, senha FROM tb_user WHERE email = :email';
     $stmt = $conn->prepare($query);
-    
-    $stmt->bindParam(':nome_completo', $data['nome_completo']);
     $stmt->bindParam(':email', $data['email']);
-    $stmt->bindParam(':senha', $hashedPassword);
+    $stmt->execute();
 
-    if ($stmt->execute()) {
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($user && password_verify($data['senha'], $user['senha'])) {
+        // Credenciais válidas, cria a sessão
+        $_SESSION['user_id'] = $user['id'];
         $response['status'] = 'success';
-        $response['message'] = 'Cadastro realizado com sucesso. <br/> Vá para a página de login!';
+        $response['message'] = 'Login realizado com sucesso!';
+        $response['redirect'] = 'http://teste_alfama_web.local/?action=profile'; // Redireciona para a página de perfil
     } else {
         $response['status'] = 'error';
-        $response['message'] = 'Erro ao inserir os dados.';
+        $response['message'] = 'Credenciais inválidas!';
     }
 } catch (Exception $e) {
     $response['status'] = 'error';
