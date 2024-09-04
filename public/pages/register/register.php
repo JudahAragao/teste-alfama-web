@@ -65,9 +65,9 @@ if (isset($_SESSION['user_id'])) {
                     success: (result) => {
                         if (result.status === 'success') {
                             $('#form-register').trigger("reset");
-                            $('#alert').removeClass("alert-danger").addClass("alert-success").html(result.message).fadeIn();
+                            $('#alert').removeClass("alert-danger").addClass("alert-success").text(result.message).fadeIn();
                         } else {
-                            $('#alert').removeClass("alert-success").addClass("alert-danger vibrate").html(result.message).fadeIn();
+                            $('#alert').removeClass("alert-success").addClass("alert-danger vibrate").text(result.message).fadeIn();
                         }
                         setTimeout(() => {
                             $('#alert').fadeOut('Slow');

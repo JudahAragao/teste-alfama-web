@@ -2,6 +2,7 @@
 header('Content-Type: application/json');
 require_once 'connect.php';
 require_once './validators/validation_register.php';
+require_once '../src/User/UserRegister.php';
 
 $response = [];
 
@@ -11,38 +12,27 @@ try {
 
     // Checar conexão com banco de dados
     if (!$conn) {
-		$response['status'] = 'error';
-		$response['message'] = 'Não foi possível conectar ao banco de dados!';
+        $response['status'] = 'error';
+        $response['message'] = 'Não foi possível conectar ao banco de dados!';
         echo json_encode($response);
         exit;
     }
 
-    // Recebimento dos dados
-    $data = [
-        'nome_completo' => trim($_POST["nome_completo"] ?? ''),
-        'email' => trim($_POST["email"] ?? ''),
-        'senha' => trim($_POST["senha"] ?? ''),
-    ];
+    $userRegistration = new UserRegistration($conn);
 
-    // Validação
-    validateDataRegister($data);
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        // Recebimento dos dados
+        $data = [
+            'nome_completo' => trim($_POST["nome_completo"] ?? ''),
+            'email' => trim($_POST["email"] ?? ''),
+            'senha' => trim($_POST["senha"] ?? ''),
+        ];
 
-    // Hash da senha com bcrypt
-    $hashedPassword = password_hash($data['senha'], PASSWORD_BCRYPT);
-    
-    $query = 'INSERT INTO tb_user (nome_completo, email, senha) VALUES (:nome_completo, :email, :senha)';
-    $stmt = $conn->prepare($query);
-    
-    $stmt->bindParam(':nome_completo', $data['nome_completo']);
-    $stmt->bindParam(':email', $data['email']);
-    $stmt->bindParam(':senha', $hashedPassword);
+        // Validação
+        validateDataRegister($data);
 
-    if ($stmt->execute()) {
-        $response['status'] = 'success';
-        $response['message'] = 'Cadastro realizado com sucesso. <br/> Vá para a página de login!';
-    } else {
-        $response['status'] = 'error';
-        $response['message'] = 'Erro ao inserir os dados.';
+
+        $response = $userRegistration->register($data);
     }
 } catch (Exception $e) {
     $response['status'] = 'error';

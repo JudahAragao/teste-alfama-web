@@ -10,21 +10,16 @@
     </div>
 
     <script type="text/javascript">
-        document.getElementById('logout-button').addEventListener('click', function(e) {
-            e.preventDefault();
-
-            fetch('http://teste_alfama_web.local/app/includes/process_logout.php', {
+        $(document).ready(() => {
+            $('#logout-button').click((event) => {
+                $.ajax({
+                    url: 'http://teste_alfama_web.local/app/includes/process_logout.php',
                     method: 'POST',
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.status === 'success') {
-                        window.location.href = 'http://teste_alfama_web.local/?action=login'; // Redireciona para a página de login ou página inicial
-                    } else {
-                        alert('Erro ao fazer logout. Tente novamente.');
+                    success: () => {
+                        window.location.href = 'http://teste_alfama_web.local/?action=login';
                     }
                 })
-                .catch(error => console.error('Erro:', error));
-        });
+            })
+        })
     </script>
 </div>

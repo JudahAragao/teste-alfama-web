@@ -69,14 +69,14 @@ if (isset($_SESSION['user_id'])) {
                         if (result.status === 'success') {
                             window.location.href = result.redirect; // Redireciona para a página de perfil
                         } else {
-                            $('#alert').removeClass("alert-success").addClass("alert-danger vibrate").html(result.message).fadeIn();
+                            $('#alert').removeClass("alert-success").addClass("alert-danger vibrate").text(result.message).fadeIn();
                         }
                         setTimeout(() => {
                             $('#alert').fadeOut('Slow');
                         }, 3000);
                     },
                     error: (jqXHR, textStatus, errorThrown) => {
-                        $('#alert').html('Erro ao processar a requisição.').addClass("alert-danger vibrate").fadeIn();
+                        $('#alert').text('Erro ao processar a requisição.').addClass("alert-danger vibrate").fadeIn();
                         setTimeout(() => {
                             $('#alert').fadeOut('Slow');
                         }, 3000);
