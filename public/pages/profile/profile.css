@@ -19,23 +19,29 @@
 }
 
 .header-form {
-    width: 234px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.header-form .profile-photo {
-    width: 186px;
-    height: 178px;
-    border-radius: 100%;
-    background-color: var(--empity-file-photo);
+.header-form .container-profile-photo {
     position: relative;
     display: flex;
     justify-content: center;
+    align-items: center; /* Centraliza o conteúdo */
 }
 
-.btn-profile-photo {
+.header-form .profile-photo {
+    width: 186px;
+    height: 178px;
+    border-radius: 100%; /* Mantém a borda arredondada */
+    background-color: var(--empity-file-photo); /* Cor padrão */
+    background-size: cover; /* Cobre a div com a imagem */
+    background-position: center; /* Centraliza a imagem */
+    overflow: hidden; /* Esconde partes da imagem que extrapolam a div */
+}
+
+.header-form .btn-profile-photo {
     background-color: var(--submit-buttom-color) !important;
     color: var(--submit-buttom-text-color) !important;
     cursor: pointer;
@@ -44,6 +50,9 @@
     border-radius: 100% !important;
     position: absolute;
     top: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .header-form h3,

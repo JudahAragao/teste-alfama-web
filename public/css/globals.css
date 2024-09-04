@@ -27,6 +27,8 @@ body p {
     margin: 0;
 }
 
+
+
 .contrast {
     color: var(--link-color) !important;
 }
@@ -43,6 +45,28 @@ body p {
 .container-fluid {
     height: 100vh;
     padding: 0 !important;
+    position: relative;
+}
+
+.alert {
+    position: absolute !important;
+    top: 10px;
+    right: 10px;
+    z-index: 99;
+}
+
+.alert.vibrate {
+    animation: vibrate .5s ease-in-out;
+}
+
+/* Definir a animação de vibração */
+@keyframes vibrate {
+    0% { transform: translateX(0); }
+    20% { transform: translateX(-10px); }
+    40% { transform: translateX(10px); }
+    60% { transform: translateX(-10px); }
+    80% { transform: translateX(10px); }
+    100% { transform: translateX(0); }
 }
 
 .col-form {
@@ -115,8 +139,9 @@ body p {
     margin-left: 85px;
 }
 
-.container--header-loged .hamburger-menu {
+.container--header-loged .dropdown {
     margin-right: 85px;
+    cursor: pointer;
 }
 
 /* Estilização do header-loged ACIMA  */

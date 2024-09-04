@@ -1,14 +1,14 @@
-# Bloquear acesso direto a qualquer arquivo PHP
-<FilesMatch "\.php$">
-    Order Allow,Deny
-    Deny from all
-</FilesMatch>
-
 # Permitir acesso ao index.php
 <Files "index.php">
     Order Allow,Deny
     Allow from all
 </Files>
+
+# Permitir acesso a arquivos estáticos
+<FilesMatch "\.(css|js|png|jpg|jpeg|gif|svg|ico)$">
+    Order allow,deny
+    Allow from all
+</FilesMatch>
 
 # Habilitar o motor de reescrita
 RewriteEngine On

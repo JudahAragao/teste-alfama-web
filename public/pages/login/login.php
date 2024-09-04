@@ -1,6 +1,13 @@
 <?php
+session_start();
 include 'app/components/input-group.php';
 include 'app/components/button-form.php';
+
+// Verifica se o usuário está autenticado
+if (isset($_SESSION['user_id'])) {
+    header('Location: http://teste_alfama_web.local/?action=profile'); // Redireciona para a página de login se não estiver autenticado
+    exit;
+}
 ?>
 
 <div class="d-flex m-0">
@@ -18,8 +25,8 @@ include 'app/components/button-form.php';
 
                 <form id="form-login">
                     <?php
-                    echo inputGroup('Email', 'email', 'email', '', 'Digite seu email', ['required' => 'true'],'');
-                    echo inputGroup('Senha', 'password', 'senha', '', 'Insira sua senha', ['required' => 'true'],'');
+                    echo inputGroup('Email', 'email', 'email', '', 'Digite seu email', ['required' => 'true'], '', 'emailError');
+                    echo inputGroup('Senha', 'password', 'senha', '', 'Insira sua senha', ['required' => 'true'], '', 'passwordError');
 
                     ?>
                     <a href="">
@@ -27,7 +34,7 @@ include 'app/components/button-form.php';
                     </a>
                     <?php
 
-                    echo buttonForm('Entrar', 'submit', 'btn btn-submit', ['id' => 'saveButton'], '');
+                    echo buttonForm('Entrar', 'submit', 'btn btn-submit', ['id' => 'submitLogin'], '');
                     ?>
                 </form>
                 <?php
@@ -40,6 +47,44 @@ include 'app/components/button-form.php';
         </div>
     </div>
 
+    <script type="text/javascript">
+        $(document).ready(() => {
+            $('#submitLogin').click((event) => {
+                event.preventDefault();
+
+                var email = $('#email').val();
+                var senha = $('#senha').val();
+
+                $('#alert').removeClass("alert-danger alert-success vibrate").hide();
+
+                $.ajax({
+                    url: 'http://teste_alfama_web.local/app/includes/process_login.php',
+                    method: 'POST',
+                    data: {
+                        email,
+                        senha
+                    },
+                    dataType: 'json',
+                    success: (result) => {
+                        if (result.status === 'success') {
+                            window.location.href = result.redirect; // Redireciona para a página de perfil
+                        } else {
+                            $('#alert').removeClass("alert-success").addClass("alert-danger vibrate").text(result.message).fadeIn();
+                        }
+                        setTimeout(() => {
+                            $('#alert').fadeOut('Slow');
+                        }, 3000);
+                    },
+                    error: (jqXHR, textStatus, errorThrown) => {
+                        $('#alert').text('Erro ao processar a requisição.').addClass("alert-danger vibrate").fadeIn();
+                        setTimeout(() => {
+                            $('#alert').fadeOut('Slow');
+                        }, 3000);
+                    }
+                });
+            });
+        });
+    </script>
 
     <div class="col-banner">
         <?php include(BASE_PATH . '/app/components/banner-login-register.php'); ?>
